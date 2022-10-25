@@ -1,9 +1,9 @@
 import shutil,os
 
-file_source = '/home/ubunserver/antivirus/virustotal/'
-file_destination1 = '/home/ubunserver/antivirus/virustotalrevisando/'
-file_destination2 = '/home/ubunserver/antivirus/virustotalrevisado/'
-file_destination3 = '/home/ubunserver/antivirus/virustotalcuarentena/'
+file_source = '/home/ubunserver/github/antivirus/virustotal/'
+file_destination1 = '/home/ubunserver/github/antivirus/virustotalrevisando/'
+file_destination2 = '/home/ubunserver/github/antivirus/virustotalrevisado/'
+file_destination3 = '/home/ubunserver/github/antivirus/virustotalcuarentena/'
 
 get_file = os.listdir(file_source)
 
