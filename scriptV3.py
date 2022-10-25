@@ -22,7 +22,7 @@ def upload(file):
     jsonresp = response.json()
     idget = jsonresp.get("data").get("id")
     #coderesp = jsonresp.get("data").
-    print(jsonresp.text)
+    print(jsonresp)
     idsave(idget,file)
     #print(idget)
 
