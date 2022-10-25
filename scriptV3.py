@@ -29,7 +29,6 @@ def idsave(id,file):
     with open(file_destination4+id, "w") as fp:
         json.dump(file+":"+id, fp, indent=2)
 
-#MEJORAS V2.2 (SACAR FICHEROS DE SUBCARPETAS HASTA REVISANDO)
 for root, dirs, files in os.walk(file_source):
     for filename in files:
         filepath = os.path.join(root, filename)
