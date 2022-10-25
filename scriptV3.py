@@ -21,11 +21,13 @@ def upload(file):
     response = requests.post(url, files=files, headers=headers)
     jsonresp = response.json()
     idget = jsonresp.get("data").get("id")
+    #idgets = idget.split("'")
     idsave(idget,file)
-    print(idget)
+    #print(idget)
 
 
 def idsave(id,file):
+    print(id)
     with open(id+".json", "w") as fp:
         json.dump(file+":"+id, fp, indent=2)
     
