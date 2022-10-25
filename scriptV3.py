@@ -10,9 +10,9 @@ get_file = os.listdir(file_source)
 contador=1
 
 #MEJORAS V2.2 (SACAR FICHEROS A RAIZ)
-for root, dirs, files in os.walk(file_destination1):
-    for files in dirs:
-        filepath = os.path.join(root, files)
+for root, dirs, files in os.walk(file_source):
+    for filename in files:
+        filepath = os.path.join(root, filename)
         shutil.move(filepath, file_destination1)
 
 for x in get_file:
