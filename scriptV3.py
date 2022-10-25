@@ -9,6 +9,13 @@ get_file = os.listdir(file_source)
 
 contador=1
 
+#MEJORAS V2.2 (SACAR FICHEROS A RAIZ)
+for root, dirs, files in os.walk(file_destination1):
+    for filename in files:
+        filepath = os.path.join(root, filename)
+        shutil.move(filepath, file_destination1)
+        shutil.rmtree(filepath)
+
 for x in get_file:
    contador=contador+1                                #MEJORAS V2.2 nº1 (limitacion de lectura de archivos a 10)
    if contador <11 :                                  #MEJORAS V2.2 nº1
@@ -20,8 +27,3 @@ for x in get_file:
         f.write('Error moving ' + x)
         f.close()
 
-#MEJORAS V2.2 (SACAR FICHEROS A RAIZ)
-for root, dirs, files in os.walk(file_destination1):
-    for filename in files:
-        filepath = os.path.join(root, filename)
-        shutil.move(filepath, file_destination1)
