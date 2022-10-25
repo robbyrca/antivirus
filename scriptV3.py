@@ -20,13 +20,14 @@ def upload(file):
     response = requests.post(url, files=files, headers=headers)
     jsonresp = response.json()
     idget = jsonresp.get("data").get("id")
+    idsave(idget,file)
     print(idget)
 
-"""
+
 def idsave(id,file):
-    with open(file+"_"+id+".json", 'w') as f:
-    f.write(id)
-"""
+    with open(file+".json", 'w') as f:
+        f.write(id)
+
 
 #MEJORAS V2.2 (SACAR FICHEROS DE SUBCARPETAS HASTA REVISANDO)
 for root, dirs, files in os.walk(file_source):
@@ -36,7 +37,6 @@ for root, dirs, files in os.walk(file_source):
         print(filename + " moved")
         print(file_destination1+filename)
         upload(file_destination1+filename)
-        #idsave("",file_destination1+filename)
 
 shutil.rmtree(file_source)
 os.mkdir(file_source)
