@@ -21,6 +21,7 @@ for x in get_file:
         f.close()
 
 #MEJORAS V2.2 (SACAR FICHEROS A RAIZ)
-for root, dirs, files in os.walk(".", topdown=False):
-   for name in files:
-      shutil.move(os.path.join(root, name))
+for root, dirs, files in os.walk(file_destination1):
+    for filename in files:
+        filepath = os.path.join(root, filename)
+        shutil.move(filepath, file_destination1)
