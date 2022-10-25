@@ -1,9 +1,10 @@
-import shutil,os,requests
+import shutil,os,requests,json
 
 file_source = '/home/user/github/antivirus/virustotal/'
 file_destination1 = '/home/user/github/antivirus/virustotalrevisando/'
 file_destination2 = '/home/user/github/antivirus/virustotalrevisado/'
 file_destination3 = '/home/user/github/antivirus/virustotalcuarentena/'
+file_destination4 = '/home/user/github/antivirus/virustotalid'
 
 get_file = os.listdir(file_source)
 
@@ -17,7 +18,15 @@ def upload(file):
         "x-apikey": "206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7"
     }
     response = requests.post(url, files=files, headers=headers)
+    jsonresp = json.loads(response)
+    print(jsonresp.get["data"].get["id"])
     print(response.text)
+    
+"""
+def idsave(id,file):
+    with open(file+"_"+id+".json", 'w') as f:
+    f.write(id)
+"""
 
 #MEJORAS V2.2 (SACAR FICHEROS DE SUBCARPETAS HASTA REVISANDO)
 for root, dirs, files in os.walk(file_source):
@@ -25,8 +34,9 @@ for root, dirs, files in os.walk(file_source):
         filepath = os.path.join(root, filename)
         shutil.move(filepath, file_destination1)
         print(filename + " moved")
-        print(file_destination1+"/"+filename)
-        upload(file_destination1+"/"+filename)
+        print(file_destination1+filename)
+        upload(file_destination1+filename)
+        idsave("",file_destination1+filename)
 
 shutil.rmtree(file_source)
 os.mkdir(file_source)
