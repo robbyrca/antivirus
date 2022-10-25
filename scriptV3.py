@@ -21,7 +21,8 @@ def upload(file):
     response = requests.post(url, files=files, headers=headers)
     jsonresp = response.json()
     idget = jsonresp.get("data").get("id")
-    #idgets = idget.split("'")
+    #coderesp = jsonresp.get("data").
+    print(jsonresp.text)
     idsave(idget,file)
     #print(idget)
 
