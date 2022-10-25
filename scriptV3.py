@@ -18,10 +18,10 @@ def upload(file):
         "x-apikey": "206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7"
     }
     response = requests.post(url, files=files, headers=headers)
-    jsonresp = json.loads(response)
-    print(jsonresp.get["data"].get["id"])
-    print(response.text)
-    
+    jsonresp = response.json()
+    idget = jsonresp.get("data").get("id")
+    print(idget)
+
 """
 def idsave(id,file):
     with open(file+"_"+id+".json", 'w') as f:
