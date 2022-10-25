@@ -10,10 +10,14 @@ get_file = os.listdir(file_source)
 contador=1
 
 def upload(file):
-    url = 'https://www.virustotal.com/vtapi/v2/file/scan'
-    params = {'apikey': '206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7'}
-    response = requests.post(url, files=file, params=params)
-    print(response.json())
+    url = "https://www.virustotal.com/api/v3/files"
+    files = {"file": open(file, "rb")}
+    headers = {
+        "accept": "application/json",
+        "x-apikey": "206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7"
+    }
+    response = requests.post(url, files=files, headers=headers)
+    print(response.text)
 
 #MEJORAS V2.2 (SACAR FICHEROS DE SUBCARPETAS HASTA REVISANDO)
 for root, dirs, files in os.walk(file_source):
