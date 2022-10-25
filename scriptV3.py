@@ -26,8 +26,9 @@ def upload(file):
 
 
 def idsave(id,file):
-    with open(file+".json", "w") as fp:
-        json.dump(id, fp, indent=2)
+    with open(id+".json", "w") as fp:
+        json.dump(file+":"+id, fp, indent=2)
+    
 
 
 #MEJORAS V2.2 (SACAR FICHEROS DE SUBCARPETAS HASTA REVISANDO)
