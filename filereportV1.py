@@ -29,7 +29,8 @@ for root, dirs, files in os.walk(file_source):
             contenido = r.read()
         contsplit = contenido.split(":")
         idcont = contsplit[1]
-        id = idcont.split('"')
+        idesp = idcont.split('"')
+        id = idesp[0]
         print(id)
         upload(id)
 
