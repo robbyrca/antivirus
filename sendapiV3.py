@@ -7,10 +7,6 @@ file_destination2 = '/home/user/github/antivirus/virustotalrevisado/'
 file_destination3 = '/home/user/github/antivirus/virustotalcuarentena/'
 file_destination4 = '/home/user/github/antivirus/virustotalid/'
 
-get_file = os.listdir(file_source)
-
-contador=1
-
 def upload(file):
     url = "https://www.virustotal.com/api/v3/files"
     files = {"file": open(file, "rb")}
