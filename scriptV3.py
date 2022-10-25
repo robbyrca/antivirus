@@ -10,7 +10,7 @@ get_file = os.listdir(file_source)
 contador=1
 
 for x in get_file:
-   contador=contador+1                                #MEJORAS V2.2 nº1 (limiracion de lectura de archivos a 10)
+   contador=contador+1                                #MEJORAS V2.2 nº1 (limitacion de lectura de archivos a 10)
    if contador <11 :                                  #MEJORAS V2.2 nº1
     shutil.move(file_source + x, file_destination1)   
     if get_file:
