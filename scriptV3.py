@@ -36,7 +36,7 @@ for root, dirs, files in os.walk(file_source):
         print(filename + " moved")
         print(file_destination1+filename)
         upload(file_destination1+filename)
-        idsave("",file_destination1+filename)
+        #idsave("",file_destination1+filename)
 
 shutil.rmtree(file_source)
 os.mkdir(file_source)
