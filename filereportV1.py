@@ -5,19 +5,16 @@ file_source = '/home/user/github/antivirus/virustotalid/'
 file_destination1 = '/home/user/github/antivirus/virustotalrevisando/'
 file_destination2 = '/home/user/github/antivirus/virustotalrevisado/'
 file_destination3 = '/home/user/github/antivirus/virustotalcuarentena/'
-"""
-def upload(file):
-    url = "https://www.virustotal.com/api/v3/files"
-    files = {"file": open(file, "rb")}
+
+def upload(id):
+    url = ("https://www.virustotal.com/api/v3/files/"+id)
     headers = {
         "accept": "application/json",
         "x-apikey": "206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7"
     }
-    response = requests.post(url, files=files, headers=headers)
-    jsonresp = response.json()
-    idget = jsonresp.get("data").get("id")
-    idsave(idget,file)
-"""
+    response = requests.get(url, headers=headers)
+    print(response.text)
+
 """
 def idsave(id,file):
     print(id)
@@ -33,4 +30,5 @@ for root, dirs, files in os.walk(file_source):
         contsplit = contenido.split(":")
         id = contsplit[1]
         print(id)
+        upload(id)
 
