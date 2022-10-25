@@ -14,15 +14,6 @@ for root, dirs, files in os.walk(file_source):
     for filename in files:
         filepath = os.path.join(root, filename)
         shutil.move(filepath, file_destination1)
-"""
-for x in get_file:
-   contador=contador+1                                #MEJORAS V2.2 nº1 (limitacion de lectura de archivos a 10)
-   if contador <11 :                                  #MEJORAS V2.2 nº1
-    shutil.move(file_source + x, file_destination1)   
-    if get_file:
-        print (x + 'moved')
-    else:
-        f = open ('logs.txt', "w")
-        f.write('Error moving ' + x)
-        f.close()
-"""
+
+shutil.rmtree(file_source)
+os.mkdir(file_source)
