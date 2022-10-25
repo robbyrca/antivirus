@@ -9,18 +9,20 @@ get_file = os.listdir(file_source)
 
 contador=1
 
+def upload(file):
+    url = 'https://www.virustotal.com/vtapi/v2/file/scan'
+    params = {'apikey': '206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7'}
+    response = requests.post(url, files=file, params=params)
+    print(response.json())
+
 #MEJORAS V2.2 (SACAR FICHEROS DE SUBCARPETAS HASTA REVISANDO)
 for root, dirs, files in os.walk(file_source):
     for filename in files:
         filepath = os.path.join(root, filename)
         shutil.move(filepath, file_destination1)
         print(filename + " moved")
+        upload(file_destination1)
 
 shutil.rmtree(file_source)
 os.mkdir(file_source)
 
-url = 'https://www.virustotal.com/vtapi/v2/file/scan'
-params = {'apikey': '206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7'}
-files = {'file': ('myfile.exe', open('myfile.exe', 'rb'))}
-response = requests.post(url, files=files, params=params)
-print(response.json())
