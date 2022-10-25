@@ -9,7 +9,7 @@ get_file = os.listdir(file_source)
 
 contador=1
 
-#MEJORAS V2.2 (SACAR FICHEROS A RAIZ)
+#MEJORAS V2.2 (SACAR FICHEROS DE SUBCARPETAS HASTA REVISANDO)
 for root, dirs, files in os.walk(file_source):
     for filename in files:
         filepath = os.path.join(root, filename)
