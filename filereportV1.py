@@ -30,7 +30,7 @@ for root, dirs, files in os.walk(file_source):
         filepath = os.path.join(root, filename)
         with open(filepath, 'r') as r:
             contenido = r.read()
-        id = contenido.split(":", 1)
+        id = contenido.split(":", 2)
         print(filepath)
         print(id)
 
