@@ -28,7 +28,7 @@ def idsave(id,file):
 for root, dirs, files in os.walk(file_source):
     for filename in files:
         filepath = os.path.join(root, filename)
-        with open(filepath+filename, 'r') as r:
+        with open(filepath, 'r') as r:
             contenido = r.read()
         id = contenido.split(":", 1)
         print(id)
