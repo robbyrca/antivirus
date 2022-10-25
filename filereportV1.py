@@ -31,5 +31,6 @@ for root, dirs, files in os.walk(file_source):
         with open(filepath, 'r') as r:
             contenido = r.read()
         id = contenido.split(":", 1)
+        print(filepath)
         print(id)
 
