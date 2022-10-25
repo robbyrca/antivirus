@@ -26,7 +26,6 @@ def upload(file):
 
 
 def idsave(id,file):
-    id = response.json()
     with open(file+".json", "w") as fp:
         json.dump(id, fp, indent=2)
 
