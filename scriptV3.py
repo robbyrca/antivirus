@@ -1,9 +1,9 @@
 import shutil,os,requests
 
-file_source = '/home/ubunserver/github/antivirus/virustotal/'
-file_destination1 = '/home/ubunserver/github/antivirus/virustotalrevisando/'
-file_destination2 = '/home/ubunserver/github/antivirus/virustotalrevisado/'
-file_destination3 = '/home/ubunserver/github/antivirus/virustotalcuarentena/'
+file_source = '/home/user/github/antivirus/virustotal/'
+file_destination1 = '/home/user/github/antivirus/virustotalrevisando/'
+file_destination2 = '/home/user/github/antivirus/virustotalrevisado/'
+file_destination3 = '/home/user/github/antivirus/virustotalcuarentena/'
 
 get_file = os.listdir(file_source)
 
@@ -25,7 +25,8 @@ for root, dirs, files in os.walk(file_source):
         filepath = os.path.join(root, filename)
         shutil.move(filepath, file_destination1)
         print(filename + " moved")
-        upload(file_destination1)
+        print(file_destination1+"/"+filename)
+        upload(file_destination1+"/"+filename)
 
 shutil.rmtree(file_source)
 os.mkdir(file_source)
