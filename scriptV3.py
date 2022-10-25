@@ -14,6 +14,7 @@ for root, dirs, files in os.walk(file_source):
     for filename in files:
         filepath = os.path.join(root, filename)
         shutil.move(filepath, file_destination1)
+        print(filename + " moved")
 
 shutil.rmtree(file_source)
 os.mkdir(file_source)
