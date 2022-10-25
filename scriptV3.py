@@ -1,4 +1,5 @@
 import shutil,os,requests,json
+from urllib import response
 
 file_source = '/home/user/github/antivirus/virustotal/'
 file_destination1 = '/home/user/github/antivirus/virustotalrevisando/'
@@ -25,8 +26,9 @@ def upload(file):
 
 
 def idsave(id,file):
-    with open(file+".json", 'w') as f:
-        f.write(id)
+    id = response.json()
+    with open(file+".json", "w") as fp:
+        json.dump(id, fp, indent=2)
 
 
 #MEJORAS V2.2 (SACAR FICHEROS DE SUBCARPETAS HASTA REVISANDO)
