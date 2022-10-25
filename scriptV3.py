@@ -5,7 +5,7 @@ file_source = '/home/user/github/antivirus/virustotal/'
 file_destination1 = '/home/user/github/antivirus/virustotalrevisando/'
 file_destination2 = '/home/user/github/antivirus/virustotalrevisado/'
 file_destination3 = '/home/user/github/antivirus/virustotalcuarentena/'
-file_destination4 = '/home/user/github/antivirus/virustotalid'
+file_destination4 = '/home/user/github/antivirus/virustotalid/'
 
 get_file = os.listdir(file_source)
 
@@ -21,18 +21,13 @@ def upload(file):
     response = requests.post(url, files=files, headers=headers)
     jsonresp = response.json()
     idget = jsonresp.get("data").get("id")
-    #coderesp = jsonresp.get("data").
-    print(jsonresp)
     idsave(idget,file)
-    #print(idget)
 
 
 def idsave(id,file):
     print(id)
-    with open(id, "w") as fp:
+    with open(file_destination4+id, "w") as fp:
         json.dump(file+":"+id, fp, indent=2)
-    
-
 
 #MEJORAS V2.2 (SACAR FICHEROS DE SUBCARPETAS HASTA REVISANDO)
 for root, dirs, files in os.walk(file_source):
