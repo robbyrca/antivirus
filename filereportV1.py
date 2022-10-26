@@ -6,7 +6,7 @@ file_destination1 = '/home/ubunserver/github/antivirus/virustotalrevisando/'
 file_destination2 = '/home/ubunserver/github/antivirus/virustotalrevisado/'
 file_destination3 = '/home/ubunserver/github/antivirus/virustotalcuarentena/'
 
-def upload(id):
+def upload(id, filename):
     url = ("https://www.virustotal.com/api/v3/files/"+id)
     headers = {
         "accept": "application/json",
@@ -33,5 +33,5 @@ for root, dirs, files in os.walk(file_source):
         idesp = idcont.split('"')
         id = idesp[0]
         print(id)
-        upload(id, filename)
+        upload(id)
 
