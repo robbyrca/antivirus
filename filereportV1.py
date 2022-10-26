@@ -12,7 +12,7 @@ def upload(id):
         "accept": "application/json",
         "x-apikey": "206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7"
     }
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, files=filename)
     print(response.text)
 
 """
@@ -29,8 +29,9 @@ for root, dirs, files in os.walk(file_source):
             contenido = r.read()
         contsplit = contenido.split(":")
         idcont = contsplit[1]
+        filename = contsplit [0]
         idesp = idcont.split('"')
         id = idesp[0]
         print(id)
-        upload(id)
+        upload(id, filename)
 
