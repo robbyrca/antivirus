@@ -1,11 +1,11 @@
 import shutil,os,requests,json
 from urllib import response
 
-file_source = '/home/user/github/antivirus/virustotal/'
-file_destination1 = '/home/user/github/antivirus/virustotalrevisando/'
-file_destination2 = '/home/user/github/antivirus/virustotalrevisado/'
-file_destination3 = '/home/user/github/antivirus/virustotalcuarentena/'
-file_destination4 = '/home/user/github/antivirus/virustotalid/'
+file_source = '/home/ubunserver/github/antivirus/virustotal/'
+file_destination1 = '/home/ubunserver/github/antivirus/virustotalrevisando/'
+file_destination2 = '/home/ubunserver/github/antivirus/virustotalrevisado/'
+file_destination3 = '/home/ubunserver/github/antivirus/virustotalcuarentena/'
+file_destination4 = '/home/ubunserver/github/antivirus/virustotalid/'
 
 def upload(file):
     url = "https://www.virustotal.com/api/v3/files"
