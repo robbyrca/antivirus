@@ -14,6 +14,10 @@ def upload(id):
     }
     response = requests.get(url, headers=headers)
     print(response.text)
+    with open(file_destination2+response.text, "w") as fp:
+        json.dump(response.text, fp, indent=2)
+    print(file_destination2+response.text)
+    
 
 """
 def idsave(id,file):
