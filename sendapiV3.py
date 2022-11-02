@@ -14,7 +14,7 @@ def upload(file):
         "accept": "application/json",
         "x-apikey": "206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7"
     }
-    response = requests.post(url, files=filename, headers=headers)
+    response = requests.post(url, files=files, headers=headers)
     jsonresp = response.json()
     idget = jsonresp.get("data").get("id")
     idsave(idget,file)
