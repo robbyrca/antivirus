@@ -14,9 +14,7 @@ def upload(id):
     }
     response = requests.get(url, headers=headers)
     jsonresp = response.json()
-    with open(file_destination2+jsonresp, "w") as fp:
-        json.dump(jsonresp, fp, indent=2)
-    print(file_destination2+jsonresp)
+    print(response.json)
     
 
 """
