@@ -13,10 +13,10 @@ def upload(id):
         "x-apikey": "206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7"
     }
     response = requests.get(url, headers=headers)
-    print(response.text)
-    with open(file_destination2+response.text, "w") as fp:
-        json.dump(response.text, fp, indent=2)
-    print(file_destination2+response.text)
+    jsonresp = response.json()
+    with open(file_destination2+"ans", "w") as fp:
+        json.dump(jsonresp, fp, indent=2)
+    print(file_destination2+"ans")
     
 
 """
