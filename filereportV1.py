@@ -13,8 +13,7 @@ def upload(id):
         "x-apikey": "206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7"
     }
     response = requests.get(url, headers=headers)
-    jsonresp = response.json()
-    print(response.json)
+    print(response.text)
     
 
 """
