@@ -14,14 +14,14 @@ def upload(id):
     }
     response = requests.get(url, headers=headers)
     print(response.text)
+    jsonresp = response.text
+    responsesave(jsonresp,id)
     
 
-"""
-def idsave(id,file):
-    print(id)
-    with open(file_destination4+id, "w") as fp:
-        json.dump(file+":"+id, fp, indent=2)
-"""
+def responsesave(jsonresp, file,id):
+    print(jsonresp)
+    with open(file_destination_2+id, "w") as fp:
+        json.dump(jsonresp, fp, indent=2)
 
 for root, dirs, files in os.walk(file_source):
     for filename in files:
