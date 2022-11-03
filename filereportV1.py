@@ -33,7 +33,9 @@ for root, dirs, files in os.walk(file_source):
             contenido = r.read()
         contsplit = contenido.split(":")
         idcont = contsplit[1]
-        filename = contsplit [0]
+        filename1 = contsplit [0]
+        filename2 = filename1.split('"')
+        filename = filename2 [1]
         idesp = idcont.split('"')
         id = idesp[0]
         print(id)
