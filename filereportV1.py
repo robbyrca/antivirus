@@ -37,4 +37,4 @@ for root, dirs, files in os.walk(file_source):
         idesp = idcont.split('"')
         id = idesp[0]
         print(id)
-        upload(id, filename)
+        upload(id)
