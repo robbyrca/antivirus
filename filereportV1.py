@@ -18,7 +18,7 @@ def upload(id):
     responsesave(jsonresp,id)
     
 
-def responsesave(jsonresp, file,id):
+def responsesave(jsonresp, file):
     print(jsonresp)
     with open(file_destination_2+id, "w") as fp:
         json.dump(jsonresp, fp, indent=2)
