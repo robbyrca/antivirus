@@ -6,7 +6,7 @@ file_destination1 = '/home/user/github/antivirus/virustotalrevisando/'
 file_destination2 = '/home/user/github/antivirus/virustotalrevisado/'
 file_destination3 = '/home/user/github/antivirus/virustotalcuarentena/'
 
-def upload(id, filename):
+def upload(id):
     url = "https://www.virustotal.com/api/v3/analyses/"+id
     headers = {
         "accept": "application/json",
