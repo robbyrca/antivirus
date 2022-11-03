@@ -35,4 +35,3 @@ for root, dirs, files in os.walk(file_source):
         id = idesp[0]
         print(id)
         upload(id)
-
