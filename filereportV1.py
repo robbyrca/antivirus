@@ -6,7 +6,7 @@ file_destination1 = '/home/user/github/antivirus/virustotalrevisando/'
 file_destination2 = '/home/user/github/antivirus/virustotalrevisado/'
 file_destination3 = '/home/user/github/antivirus/virustotalcuarentena/'
 
-def upload(id):
+def upload(id, filename):
     url = "https://www.virustotal.com/api/v3/analyses/"+id
     headers = {
         "accept": "application/json",
@@ -16,6 +16,9 @@ def upload(id):
     print(response.text)
     jsonresp = response.text
     responsesave(jsonresp,id)
+    if 'malicious' in jsonresp:
+        filepath = os.path.join(root, filename)
+        shutil.move(filename, file_destination3)
     
 
 def responsesave(jsonresp, file):
@@ -34,4 +37,4 @@ for root, dirs, files in os.walk(file_source):
         idesp = idcont.split('"')
         id = idesp[0]
         print(id)
-        upload(id)
+        upload(id, filename)
