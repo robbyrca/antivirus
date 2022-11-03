@@ -20,7 +20,7 @@ def upload(id):
 
 def responsesave(jsonresp, file):
     print(jsonresp)
-    with open(file_destination_2+id, "w") as fp:
+    with open(file_destination2+id, "w") as fp:
         json.dump(jsonresp, fp, indent=2)
 
 for root, dirs, files in os.walk(file_source):
