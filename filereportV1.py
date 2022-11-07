@@ -19,7 +19,9 @@ def upload(id):
     if 'malicious' in jsonresp:
         filepath = os.path.join(root, filename)
         shutil.move(filename, file_destination3)
-    
+    else:
+        filepath = os.path.join(root, filename)
+        shutil.move(filename, file_destination2)
 
 def responsesave(jsonresp, file):
     print(jsonresp)
