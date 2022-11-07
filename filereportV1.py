@@ -5,7 +5,6 @@ file_source = '/home/user/github/antivirus/virustotalid/'
 file_destination1 = '/home/user/github/antivirus/virustotalrevisando/'
 file_destination2 = '/home/user/github/antivirus/virustotalrevisado/'
 file_destination3 = '/home/user/github/antivirus/virustotalcuarentena/'
-file_destination4 = 'home/user/github/antivirus/logs/'
 
 def upload(id):
     url = "https://www.virustotal.com/api/v3/analyses/"+id
@@ -24,7 +23,7 @@ def upload(id):
 
 def responsesave(jsonresp, file):
     print(jsonresp)
-    with open(file_destination4+id, "w") as fp:
+    with open(file_destination2+id, "w") as fp:
         json.dump(jsonresp, fp, indent=2)
 
 for root, dirs, files in os.walk(file_source):
