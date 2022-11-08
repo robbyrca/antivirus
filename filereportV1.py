@@ -15,7 +15,7 @@ def upload(id):
     }
     response = requests.get(url, headers=headers)
     print(response.text)
-    jsonresp = response.text
+    jsonresp = response.json()
     responsesave(jsonresp,id)
     #print(jsonresp)
     #malcont = jsonresp.get("data").get("id")
