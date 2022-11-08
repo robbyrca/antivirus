@@ -16,7 +16,7 @@ def upload(id):
     #print(response.text)
     jsonresp = response.text
     responsesave(jsonresp,id)
-    print(jsonresp)
+    #print(jsonresp)
     if 'malicious' in jsonresp:
         print('entro m')
         filepath = os.path.join(root, filename)
