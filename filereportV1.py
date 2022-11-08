@@ -13,13 +13,16 @@ def upload(id):
         "x-apikey": "206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7"
     }
     response = requests.get(url, headers=headers)
-    print(response.text)
+    #print(response.text)
     jsonresp = response.text
     responsesave(jsonresp,id)
+    print(jsonresp)
     if 'malicious' in jsonresp:
+        print('entro m')
         filepath = os.path.join(root, filename)
         shutil.move(filename, file_destination3)
     else:
+        print('entro r')
         filepath = os.path.join(root, filename)
         shutil.move(filename, file_destination2)
 
