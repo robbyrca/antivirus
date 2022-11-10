@@ -1,7 +1,7 @@
 import shutil
 import os
 
-file_source = 'virustotalcuarentena/'
+file_source = 'cuarentena/'
 
 shutil.rmtree(file_source)
-os.mkdir('virustotalcuarentena/')
+os.mkdir('cuarentena/')
