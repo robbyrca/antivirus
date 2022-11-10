@@ -17,7 +17,7 @@ def upload(id):
     #print(response.text)
     jsonresp = response.json()
     if jsonresp.get("data").get("attributes").get("status") == "queued":
-        return "in queue"
+        return 
     else:    
         malget = jsonresp.get("data").get("attributes").get("stats").get("malicious")
         print (malget)
