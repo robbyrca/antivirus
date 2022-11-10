@@ -18,10 +18,8 @@ def upload(id):
     jsonresp = response.json()
     malget = jsonresp.get("data").get("attributes").get("stats").get("malicious")
     print (malget)
-    responsesave(jsonresp,id)
-    #print(jsonresp)
-    #malcont = jsonresp.get("data").get("id")
-    if 'malicious' in jsonresp:
+    responsesave(malget,id)
+    if  malget>0:
         print('entro m')
         filepath = os.path.join(root, filename)
         shutil.move(filename, file_destination3)
@@ -30,10 +28,9 @@ def upload(id):
         filepath = os.path.join(root, filename)
         shutil.move(filename, file_destination2)
 
-def responsesave(jsonresp, file):
-    #print(jsonresp)
+def responsesave(malget, file):
     with open(file_destination4+id, "w") as fp:
-        json.dump(jsonresp, fp, indent=2)
+        json.dump(malget, fp, indent=2)
 
 for root, dirs, files in os.walk(file_source):
     for filename in files:
