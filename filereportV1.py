@@ -16,7 +16,7 @@ def upload(id):
     response = requests.get(url, headers=headers)
     #print(response.text)
     jsonresp = response.json()
-    malget = jsonresp.get("data").get("stats").get("malicious")
+    malget = jsonresp.get("data").get("attributes").get("stats").get("malicious")
     print (malget)
     responsesave(jsonresp,id)
     #print(jsonresp)
