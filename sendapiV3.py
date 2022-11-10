@@ -20,7 +20,6 @@ def upload(file):
     idsave(idget,file)
 
 def uploadbig(file):
-    while True:
         files = {"file": open(file, "rb")}
         url = "https://www.virustotal.com/api/v3/files/upload_url"
         headers = {
@@ -36,13 +35,11 @@ def uploadbig(file):
         if response.status_code == 200:
             result = response.json()
             url_upload = result.get("data")
-            True
 
         else:
             print ("No s'ha pogut obtenir la URL :(")
             print ("ERROR al pujar el archiu :!")
             print ("Status code: " + str(response.status_code))
-            False
         
         #Obtenim una id
         response = requests.post(url_upload, files=files, headers=headers)
