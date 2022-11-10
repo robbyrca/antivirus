@@ -16,17 +16,20 @@ def upload(id):
     response = requests.get(url, headers=headers)
     #print(response.text)
     jsonresp = response.json()
-    malget = jsonresp.get("data").get("attributes").get("stats").get("malicious")
-    print (malget)
-    responsesave(malget,id)
-    if  malget>0:
-        print('entro m')
-        filepath = os.path.join(root, filename)
-        shutil.move(filename, file_destination3)
-    else:
-        print('entro r')
-        filepath = os.path.join(root, filename)
-        shutil.move(filename, file_destination1)
+    if jsonresp.get("data").get("attributes").get("status") == "queued":
+        return "in queue"
+    else:    
+        malget = jsonresp.get("data").get("attributes").get("stats").get("malicious")
+        print (malget)
+        responsesave(malget,id)
+        if  malget>0:
+            print('entro m')
+            filepath = os.path.join(root, filename)
+            shutil.move(filename, file_destination3)
+        else:
+            print('entro r')
+            filepath = os.path.join(root, filename)
+            shutil.move(filename, file_destination1)
 
 def responsesave(malget, file):
     with open(file_destination4+id, "w") as fp:
