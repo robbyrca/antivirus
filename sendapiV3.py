@@ -19,6 +19,42 @@ def upload(file):
     idget = jsonresp.get("data").get("id")
     idsave(idget,file)
 
+def uploadbig(file):
+    while True:
+        files = {"file": open(file, "rb")}
+        url = "https://www.virustotal.com/api/v3/files/upload_url"
+        headers = {
+            "accept": "application/json",
+            "x-apikey": "206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7"
+        }
+        response = requests.get(url, headers=headers)
+        if(response.status_code == 429):
+            print("Error de cuota excedida :! o Error de demasiadas solicitudes controlate ;)")
+            print("Codigo de error : " + str(response.status_code))
+            exit()
+
+        if response.status_code == 200:
+            result = response.json()
+            url_upload = result.get("data")
+            True
+
+        else:
+            print ("No s'ha pogut obtenir la URL :(")
+            print ("ERROR al pujar el archiu :!")
+            print ("Status code: " + str(response.status_code))
+            False
+        
+        #Obtenim una id
+        response = requests.post(url_upload, files=files, headers=headers)
+        if(response.status_code == 429):
+            print("Error de cuota excedida :! o Error de demasiadas solicitudes controlate ;)")
+            print("Codigo de error : " + str(response.status_code))
+            exit()
+
+        if response.status_code == 200:
+            result = response.json()
+            idbig = result.get("data").get("id")
+            idsave(idbig,file)
 
 def idsave(id,file):
     print(id)
@@ -31,7 +67,10 @@ for root, dirs, files in os.walk(file_source):
         shutil.move(filepath, file_destination1)
         print(filename + " moved")
         print(file_destination1+filename)
-        upload(file_destination1+filename)
+        if (os.path.getsize(os.path.join(root, filename)) >> 20) > 32:
+            uploadbig(file_destination1+filename)
+        else:
+            upload(file_destination1+filename)
 
 shutil.rmtree(file_source)
 os.mkdir(file_source)
