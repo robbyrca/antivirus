@@ -26,7 +26,7 @@ def upload(id):
     else:
         print('entro r')
         filepath = os.path.join(root, filename)
-        shutil.move(filename, file_destination2)
+        shutil.move(filename, file_destination1)
 
 def responsesave(malget, file):
     with open(file_destination4+id, "w") as fp:
