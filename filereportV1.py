@@ -14,8 +14,10 @@ def upload(id):
         "x-apikey": "206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7"
     }
     response = requests.get(url, headers=headers)
-    print(response.text)
+    #print(response.text)
     jsonresp = response.json()
+    malget = jsonresp.get("data").get("stats").get("malicious")
+    print (malget)
     responsesave(jsonresp,id)
     #print(jsonresp)
     #malcont = jsonresp.get("data").get("id")
