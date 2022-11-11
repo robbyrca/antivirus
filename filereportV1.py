@@ -22,7 +22,7 @@ def upload(id):
         responsesave(malget,id)
         if  malget>0:
             #print('entro m')
-            print('Archivo malicioso detectado!')
+            print('\n'+'Archivo malicioso detectado!')
             print(filename)
             filepath = os.path.join(root, filename)
             shutil.move(filename, file_destination3)
@@ -59,4 +59,4 @@ for path in os.listdir(file_destination2):
 #print('Quedan ' + str(count) + ' archivos por analizar')
 
 if count > 0:
-    print('Quedan ' + str(count) + ' archivos por analizar')
+    print('\n'+'Quedan ' + str(count) + ' archivos por analizar')
