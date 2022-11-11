@@ -50,7 +50,9 @@ for root, dirs, files in os.walk(file_source):
         #print(id)
         upload(id)
         count=0
-        if os.path.isfile(os.path.join(root, filename)):
+
+for path in os.listdir(file_destination2):
+    if os.path.isfile(os.path.join(root, filename)):
             count = count + 1
 
 print('File count:', count)
