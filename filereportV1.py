@@ -26,6 +26,7 @@ def upload(id):
             print(filename)
             filepath = os.path.join(root, filename)
             shutil.move(filename, file_destination3)
+            os.remove(file_source+id)
         else:
             #print('entro r')
             filepath = os.path.join(root, filename)
