@@ -64,11 +64,11 @@ for root, dirs, files in os.walk(file_source):
         #print(file_destination1+filename)
         if (os.path.getsize(os.path.join(root, filename)) >> 20) > 32:
             shutil.move(filepath, file_destination1)
-            print(file_destination1+filename + " moved"+"\n")
+            print("\n"+file_destination1+filename + " moved")
             uploadbig(file_destination1+filename)
         else:
             shutil.move(filepath, file_destination1)
-            print(file_destination1+filename + " moved"+"\n")
+            print("\n"+file_destination1+filename + " moved")
             upload(file_destination1+filename)
 
 shutil.rmtree(file_source)
