@@ -49,13 +49,14 @@ for root, dirs, files in os.walk(file_source):
         id = idesp[0]
         #print(id)
         upload(id)
-        count=0
+
+count=0
 
 for path in os.listdir(file_destination2):
     if os.path.isfile(os.path.join(root, filename)):
             count = count + 1
 
-print('Quedan ' + str(count) + 'archivos por analizar')
+print('Quedan ' + str(count) + ' archivos por analizar')
 
 if count > 0:
-    print('Quedan ' + str(count) + 'archivos por analizar')
+    print('Quedan ' + str(count) + ' archivos por analizar')
