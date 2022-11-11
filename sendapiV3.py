@@ -73,5 +73,6 @@ for root, dirs, files in os.walk(file_source):
 
 shutil.rmtree(file_source)
 os.mkdir(file_source)
+#!/usr/bin/python3
 os.system('/home/user/github/antivirus/filereportV1.py')
 
