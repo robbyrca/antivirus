@@ -18,14 +18,16 @@ def upload(id):
     jsonresp = response.json()
     if jsonresp.get("data").get("attributes").get("status") != "queued":  
         malget = jsonresp.get("data").get("attributes").get("stats").get("malicious")
-        print (malget)
+        #print (malget)
         responsesave(malget,id)
         if  malget>0:
-            print('entro m')
+            #print('entro m')
+            print('Archivo malicioso detectado!')
+            print(filename)
             filepath = os.path.join(root, filename)
             shutil.move(filename, file_destination3)
         else:
-            print('entro r')
+            #print('entro r')
             filepath = os.path.join(root, filename)
             shutil.move(filename, file_destination1)
 
@@ -47,3 +49,7 @@ for root, dirs, files in os.walk(file_source):
         id = idesp[0]
         #print(id)
         upload(id)
+        count=0
+        if os.path.isfile(os.path.join(root, filename)):
+            count += 1
+        print('File count:', count)
