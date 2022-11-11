@@ -54,7 +54,7 @@ def uploadbig(file):
             idsave(idbig,file)
 
 def idsave(id,file):
-    print(id)
+    #print(id)
     with open(file_destination4+id, "w") as fp:
         json.dump(file+":"+id, fp, indent=2)
 
@@ -64,11 +64,11 @@ for root, dirs, files in os.walk(file_source):
         print(file_destination1+filename)
         if (os.path.getsize(os.path.join(root, filename)) >> 20) > 32:
             shutil.move(filepath, file_destination1)
-            print(filename + " moved")
+            print(filename + " moved"+"\n")
             uploadbig(file_destination1+filename)
         else:
             shutil.move(filepath, file_destination1)
-            print(filename + " moved")
+            print(filename + " moved"+"\n")
             upload(file_destination1+filename)
 
 shutil.rmtree(file_source)
