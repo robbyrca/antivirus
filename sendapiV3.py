@@ -73,4 +73,5 @@ for root, dirs, files in os.walk(file_source):
 
 shutil.rmtree(file_source)
 os.mkdir(file_source)
+os.system('filereportV1.py')
 
