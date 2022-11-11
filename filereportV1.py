@@ -16,9 +16,7 @@ def upload(id):
     response = requests.get(url, headers=headers)
     #print(response.text)
     jsonresp = response.json()
-    if jsonresp.get("data").get("attributes").get("status") == "queued":
-        return 
-    else:    
+    if jsonresp.get("data").get("attributes").get("status") != "queued":  
         malget = jsonresp.get("data").get("attributes").get("stats").get("malicious")
         print (malget)
         responsesave(malget,id)
