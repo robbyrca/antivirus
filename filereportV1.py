@@ -55,7 +55,7 @@ for path in os.listdir(file_destination2):
     if os.path.isfile(os.path.join(root, filename)):
             count = count + 1
 
-print('Quedan ' + count + 'archivos por analizar')
+print('Quedan ' + str(count) + 'archivos por analizar')
 
 if count > 0:
-    print('Quedan ' + count + 'archivos por analizar')
+    print('Quedan ' + str(count) + 'archivos por analizar')
