@@ -73,5 +73,5 @@ for root, dirs, files in os.walk(file_source):
 
 shutil.rmtree(file_source)
 os.mkdir(file_source)
-exec("/home/user/github/antivirus/filereportV1.py")
+exec(open("filereportV1.py").read())
 
