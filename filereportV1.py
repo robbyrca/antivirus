@@ -51,5 +51,6 @@ for root, dirs, files in os.walk(file_source):
         upload(id)
         count=0
         if os.path.isfile(os.path.join(root, filename)):
-            count += 1
-        print('File count:', count)
+            count = count + 1
+
+print('File count:', count)
