@@ -73,6 +73,5 @@ for root, dirs, files in os.walk(file_source):
 
 shutil.rmtree(file_source)
 os.mkdir(file_source)
-program = input('filereportV1.py')
-exec(open(program).read())
+exec(open("filereportV1.py").read())
 
