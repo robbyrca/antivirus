@@ -17,6 +17,7 @@ def upload(file):
     response = requests.post(url, files=files, headers=headers)
     jsonresp = response.json()
     idget = jsonresp.get("data").get("id")
+    print(file_destination1+filename + " sended")
     idsave(idget,file)
 
 def uploadbig(file):
@@ -51,25 +52,25 @@ def uploadbig(file):
         if response.status_code == 200:
             result = response.json()
             idbig = result.get("data").get("id")
+            print(file_destination1+filename + " sended")
             idsave(idbig,file)
 
 def idsave(id,file):
-    #print(id)
     with open(file_destination4+id, "w") as fp:
         json.dump(file+":"+id, fp, indent=2)
 
 for root, dirs, files in os.walk(file_source):
     for filename in files:
         filepath = os.path.join(root, filename)
-        #print(file_destination1+filename)
-    if (os.path.getsize(os.path.join(root, filename)) >> 20) > 32:  
         shutil.move(filepath, file_destination1)
-        print("\n"+file_destination1+filename + " moved")
-        uploadbig(file_destination1+filename)
-    else:
-        shutil.move(filepath, file_destination1)
-        print("\n"+file_destination1+filename + " moved")
-        upload(file_destination1+filename)
+for root, dirs, files in os.walk(file_destination1):
+    for filename in files:        
+        if (os.path.getsize(os.path.join(root, filename)) >> 20) > 32:  
+            print("\n"+file_destination1+filename + " processing")
+            uploadbig(file_destination1+filename)
+        else:
+            print("\n"+file_destination1+filename + " processing")
+            upload(file_destination1+filename)
 
 shutil.rmtree(file_source)
 os.mkdir(file_source)
