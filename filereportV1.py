@@ -36,6 +36,7 @@ def upload(id):
             os.remove(rutaid)
         else:
             #print('entro r')
+            print(enviocheck)
             filepath = os.path.join(root, filename)
             shutil.move(filename, file_destination1)
             os.remove(rutaid)
@@ -63,9 +64,10 @@ for root, dirs, files in os.walk(file_source):
     for filename in files:
         filepath = os.path.join(root, filename)
         enviocheck = filepath
-        checkFileExistance (enviocheck)
-        if enviocheck == True:
-            if filepath != (file_source+'.DS_Store'):
+        idenruta = checkFileExistance (enviocheck)
+        #print(idenruta)
+        if idenruta == True:
+            if filepath != ('/Users/ruben/Documents/GitHub/antivirus/id/.DS_Store'):
                 with open(filepath, 'r') as r:
                     contenido = r.read()
                 contsplit = contenido.split(":")
@@ -80,11 +82,17 @@ for root, dirs, files in os.walk(file_source):
                 enviocheck = filename
                 existe = checkFileExistance(enviocheck)
                 if existe == True:
-                    upload(id)
+                    if filepath != ('/Users/ruben/Documents/GitHub/antivirus/id/.DS_Store'):
+                        upload(id)
+                    else:
+                        os.remove(filepath)
+                        print(filepath+'removed')
                 else:
                     print ('No se ha encontrado el archivo')
                     os.remove(rutaid)
             else:
+                print(filepath)
+                print('removed')
                 os.remove(filepath)
         else:
             print('No hay ningun archivo a analizar')
