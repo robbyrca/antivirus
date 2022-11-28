@@ -63,7 +63,6 @@ def responsesave(malget, file):
 
 for root, dirs, files in os.walk(file_source):
     for filename in files:
-        print('in')
         filepath = os.path.join(root, filename)
         enviocheck = filepath
         idenruta = checkFileExistance (enviocheck)
@@ -83,7 +82,6 @@ for root, dirs, files in os.walk(file_source):
                 rutaid = filepath
                 enviocheck = filename
                 existe = checkFileExistance(enviocheck)
-                print(existe)
                 if existe == True:
                     if filepath != ('/Users/ruben/Documents/GitHub/antivirus/id/.DS_Store'):
                         upload(id)

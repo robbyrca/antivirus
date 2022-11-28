@@ -37,7 +37,7 @@ def upload(file):
             idget = jsonresp.get("data").get("id")
             print(file_destination1+filename + " sended")
             shutil.move(file_destination1+filename, file_destination5)
-            idsave(idget,file)
+            idsave(idget,file_destination5+filename)
             bucle = True
         else:
             print ("No s'ha pogut obtenir la URL :(")
@@ -87,7 +87,7 @@ def uploadbig(file):
                 idbig = result.get("data").get("id")
                 print(file_destination1+filename + " sended")
                 shutil.move(file_destination1+filename, file_destination5)
-                idsave(idbig,file)
+                idsave(idbig,file_destination5+filename)
                 buclebig=True
 
 def idsave(id,file):
