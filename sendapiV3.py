@@ -2,6 +2,8 @@ import shutil,os,requests,json,time
 from urllib import response
 
 timesleepcount=0
+buclebig=False
+bucle=False
 
 file_source = '/Users/ruben/Documents/GitHub/antivirus/virustotal/'
 file_destination1 = '/Users/ruben/Documents/GitHub/antivirus/procesandoid/'
@@ -12,7 +14,7 @@ file_destination5 = '/Users/ruben/Documents/GitHub/antivirus/procesandorep/'
 
 def upload(file):
     global timesleepcount
-    print (timesleepcount)
+    global bucle
     url = "https://www.virustotal.com/api/v3/files"
     files = {"file": open(file, "rb")}
     headers = {
@@ -34,7 +36,9 @@ def upload(file):
             jsonresp = response.json()
             idget = jsonresp.get("data").get("id")
             print(file_destination1+filename + " sended")
+            shutil.move(file_destination1+filename, file_destination5)
             idsave(idget,file)
+            bucle = True
         else:
             print ("No s'ha pogut obtenir la URL :(")
             print ("ERROR al pujar el archiu :!")
@@ -42,6 +46,7 @@ def upload(file):
 
 def uploadbig(file):
         global timesleepcount
+        global buclebig
         files = {"file": open(file, "rb")}
         url = "https://www.virustotal.com/api/v3/files/upload_url"
         headers = {
@@ -81,27 +86,40 @@ def uploadbig(file):
                 result = response.json()
                 idbig = result.get("data").get("id")
                 print(file_destination1+filename + " sended")
+                shutil.move(file_destination1+filename, file_destination5)
                 idsave(idbig,file)
+                buclebig=True
 
 def idsave(id,file):
     with open(file_destination4+id, "w") as fp:
         json.dump(file+":"+id, fp, indent=2)
+
+def checkFileExistance(enviocheck):
+    try:
+        with open(enviocheck, 'r') as f:
+            return True
+    except FileNotFoundError as e:
+        return False
+    except IOError as e:
+        return False
 
 for root, dirs, files in os.walk(file_source):
     for filename in files:
         filepath = os.path.join(root, filename)
         shutil.move(filepath, file_destination1)
 for root, dirs, files in os.walk(file_destination1):
-    
     for filename in files:
         if (os.path.getsize(os.path.join(root, filename)) >> 20) > 32:  
             print("\n"+file_destination1+filename + " processing")
-            uploadbig(file_destination1+filename)
+            while buclebig == False:
+                uploadbig(file_destination1+filename)
         else:
             print("\n"+file_destination1+filename + " processing")
-            upload(file_destination1+filename)
+            while bucle == False:
+                upload(file_destination1+filename)
 
 shutil.rmtree(file_source)
 os.mkdir(file_source)
+
 #exec(open("filereportV1.py").read())
 

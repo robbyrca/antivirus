@@ -4,9 +4,10 @@ from pathlib import Path
 
 file_source = '/Users/ruben/Documents/GitHub/antivirus/id/'
 file_destination1 = '/Users/ruben/Documents/GitHub/antivirus/verificado/'
-file_destination2 = '/Users/ruben/Documents/GitHub/antivirus/procesando/'
+file_destination2 = '/Users/ruben/Documents/GitHub/antivirus/procesandoid/'
 file_destination3 = '/Users/ruben/Documents/GitHub/antivirus/cuarentena/'
 file_destination4 = '/Users/ruben/Documents/GitHub/antivirus/logs/'
+file_destination5 = '/Users/ruben/Documents/GitHub/antivirus/procesandorep/'
 
 def upload(id):
     url = "https://www.virustotal.com/api/v3/analyses/"+id
@@ -62,10 +63,11 @@ def responsesave(malget, file):
 
 for root, dirs, files in os.walk(file_source):
     for filename in files:
+        print('in')
         filepath = os.path.join(root, filename)
         enviocheck = filepath
         idenruta = checkFileExistance (enviocheck)
-        #print(idenruta)
+        print(idenruta)
         if idenruta == True:
             if filepath != ('/Users/ruben/Documents/GitHub/antivirus/id/.DS_Store'):
                 with open(filepath, 'r') as r:
@@ -81,6 +83,7 @@ for root, dirs, files in os.walk(file_source):
                 rutaid = filepath
                 enviocheck = filename
                 existe = checkFileExistance(enviocheck)
+                print(existe)
                 if existe == True:
                     if filepath != ('/Users/ruben/Documents/GitHub/antivirus/id/.DS_Store'):
                         upload(id)
