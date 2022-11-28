@@ -1,13 +1,18 @@
 import shutil,os,requests,json,time
 from urllib import response
 
+timesleepcount=0
+
 file_source = '/Users/ruben/Documents/GitHub/antivirus/virustotal/'
-file_destination1 = '/Users/ruben/Documents/GitHub/antivirus/procesando/'
+file_destination1 = '/Users/ruben/Documents/GitHub/antivirus/procesandoid/'
 file_destination2 = '/Users/ruben/Documents/GitHub/antivirus/verificado/'
 file_destination3 = '/Users/ruben/Documents/GitHub/antivirus/cuarentena/'
 file_destination4 = '/Users/ruben/Documents/GitHub/antivirus/id/'
+file_destination5 = '/Users/ruben/Documents/GitHub/antivirus/procesandorep/'
 
 def upload(file):
+    global timesleepcount
+    print (timesleepcount)
     url = "https://www.virustotal.com/api/v3/files"
     files = {"file": open(file, "rb")}
     headers = {
@@ -16,15 +21,27 @@ def upload(file):
     }
     timesleepcount = timesleepcount + 1
     if timesleepcount == 4:
+        print('Control de tiempo de 60 segundos')
         time.sleep(60)
+        timesleepcount=0
     else:
         response = requests.post(url, files=files, headers=headers)
-        jsonresp = response.json()
-        idget = jsonresp.get("data").get("id")
-        print(file_destination1+filename + " sended")
-        idsave(idget,file)
+        if(response.status_code == 429):
+            print("Error de cuota excedida :! o Error de demasiadas solicitudes controlate ;)")
+            print("Codigo de error : " + str(response.status_code))
+            exit()
+        if response.status_code == 200:
+            jsonresp = response.json()
+            idget = jsonresp.get("data").get("id")
+            print(file_destination1+filename + " sended")
+            idsave(idget,file)
+        else:
+            print ("No s'ha pogut obtenir la URL :(")
+            print ("ERROR al pujar el archiu :!")
+            print ("Status code: " + str(response.status_code))
 
 def uploadbig(file):
+        global timesleepcount
         files = {"file": open(file, "rb")}
         url = "https://www.virustotal.com/api/v3/files/upload_url"
         headers = {
@@ -33,9 +50,8 @@ def uploadbig(file):
         }
         timesleepcount = timesleepcount + 1
         if timesleepcount == 4:
+            print('Control de tiempo de 60 segundos')
             time.sleep(60)
-            for i in range(0,60):
-                print('CONTROL DE CUOTA: Pausa de '+i+' segundos')
             timesleepcount=0
 
         else:
@@ -71,12 +87,12 @@ def idsave(id,file):
     with open(file_destination4+id, "w") as fp:
         json.dump(file+":"+id, fp, indent=2)
 
-
 for root, dirs, files in os.walk(file_source):
     for filename in files:
         filepath = os.path.join(root, filename)
         shutil.move(filepath, file_destination1)
 for root, dirs, files in os.walk(file_destination1):
+    
     for filename in files:
         if (os.path.getsize(os.path.join(root, filename)) >> 20) > 32:  
             print("\n"+file_destination1+filename + " processing")
