@@ -36,20 +36,21 @@ def upload(id):
                 malget = jsonresp.get("data").get("attributes").get("stats").get("malicious")
                 #print (malget)
                 responsesave(malget,id)
-            if  malget>0:
-                #print('entro m')
-                print('\n'+'Archivo malicioso detectado!')
-                filepath = os.path.join(root, filename)
-                shutil.move(filename, file_destination3)
-                os.remove(rutaid)
-                bucle = True
-            else:
-                #print('entro r')
-                print(enviocheck+'1')
-                filepath = os.path.join(root, filename)
-                shutil.move(filename, file_destination1)
-                os.remove(rutaid)
-                bucle = True
+                if  malget>0:
+                    #print('entro m')
+                    print(enviocheck)
+                    print('\n'+'Archivo malicioso detectado!')
+                    filepath = os.path.join(root, filename)
+                    shutil.move(filename, file_destination3)
+                    os.remove(rutaid)
+                    bucle = True
+                else:
+                    #print('entro r')
+                    #print(enviocheck+'1')
+                    filepath = os.path.join(root, filename)
+                    shutil.move(filename, file_destination1)
+                    os.remove(rutaid)
+                    bucle = True
 
         else:
             print ("No s'ha pogut obtenir la URL :(")
