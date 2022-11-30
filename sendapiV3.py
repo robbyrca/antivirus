@@ -2,8 +2,6 @@ import shutil,os,requests,json,time
 from urllib import response
 
 timesleepcount=0
-buclebig=False
-bucle=False
 
 file_source = '/Users/ruben/Documents/GitHub/antivirus/virustotal/'
 file_destination1 = '/Users/ruben/Documents/GitHub/antivirus/procesandoid/'
@@ -111,10 +109,12 @@ for root, dirs, files in os.walk(file_destination1):
     for filename in files:
         if (os.path.getsize(os.path.join(root, filename)) >> 20) > 32:  
             print("\n"+file_destination1+filename + " processing")
+            buclebig = False
             while buclebig == False:
                 uploadbig(file_destination1+filename)
         else:
             print("\n"+file_destination1+filename + " processing")
+            bucle = False
             while bucle == False:
                 upload(file_destination1+filename)
 
