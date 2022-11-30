@@ -20,7 +20,7 @@ def upload(file):
         "x-apikey": "206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7"
     }
     timesleepcount = timesleepcount + 1
-    if timesleepcount == 4:
+    if timesleepcount == 5:
         print('Control de tiempo de 60 segundos')
         time.sleep(60)
         timesleepcount=0
@@ -52,7 +52,7 @@ def uploadbig(file):
             "x-apikey": "206706e5d63a9393a5786e3191ba9c471dcbb00305f4a32d49de38c45f20c4c7"
         }
         timesleepcount = timesleepcount + 1
-        if timesleepcount == 4:
+        if timesleepcount == 5:
             print('Control de tiempo de 60 segundos')
             time.sleep(60)
             timesleepcount=0
