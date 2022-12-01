@@ -134,13 +134,13 @@ for root, dirs, files in os.walk(file_destination1):
     for filename in files:
         if (os.path.getsize(os.path.join(root, filename)) >> 20) > 32:  
             print("\n"+file_destination1+filename + " processing")
-            logbigp()
+            logbigp(filename)
             buclebig = False
             while buclebig == False:
                 uploadbig(file_destination1+filename)
         else:
             print("\n"+file_destination1+filename + " processing")
-            logp()
+            logp(filename)
             bucle = False
             while bucle == False:
                 upload(file_destination1+filename)

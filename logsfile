@@ -12,3 +12,33 @@ surigo.txt Archivo correcto. Desplazado a verificado
 /Users/ruben/Documents/GitHub/antivirus/procesandorep/pija.txt Archivo correcto. Desplazado a verificado
 /Users/ruben/Documents/GitHub/antivirus/procesandorep/eicar.txt Archivo malicioso. Se ha desplazado a cuarentena
 Control de tiempo de 60 segundos
+
+#sendapiV3.py
+
+#sendapiV3.py
+/Users/ruben/Documents/GitHub/antivirus/procesandoid/payasin.txt processing
+/Users/ruben/Documents/GitHub/antivirus/procesandoid/payasin.txt sended
+/Users/ruben/Documents/GitHub/antivirus/procesandoid/pija.txt processing
+/Users/ruben/Documents/GitHub/antivirus/procesandoid/pija.txt sended
+/Users/ruben/Documents/GitHub/antivirus/procesandoid/Firefox Setup 106.0.5.msi processing
+/Users/ruben/Documents/GitHub/antivirus/procesandoid/Firefox Setup 106.0.5.msi sended
+/Users/ruben/Documents/GitHub/antivirus/procesandoid/eicar.txt processing
+/Users/ruben/Documents/GitHub/antivirus/procesandoid/eicar.txt sended
+/Users/ruben/Documents/GitHub/antivirus/procesandoid/surigo.txt processing
+Control de tiempo de 60 segundos
+/Users/ruben/Documents/GitHub/antivirus/procesandoid/surigo.txt sended
+
+#filereportV1.py
+/Users/ruben/Documents/GitHub/antivirus/procesandorep/pija.txt Archivo correcto. Desplazado a verificado
+/Users/ruben/Documents/GitHub/antivirus/procesandorep/eicar.txt Archivo malicioso. Se ha desplazado a cuarentena
+Control de tiempo de 60 segundos
+Control de tiempo de 60 segundos
+Control de tiempo de 60 segundos
+Control de tiempo de 60 segundos
+Control de tiempo de 60 segundos
+
+#filereportV1.py
+/Users/ruben/Documents/GitHub/antivirus/procesandorep/payasin.txt Archivo correcto. Desplazado a verificado
+/Users/ruben/Documents/GitHub/antivirus/procesandorep/Firefox Setup 106.0.5.msi Archivo correcto. Desplazado a verificado
+
+#filereportV1.py
