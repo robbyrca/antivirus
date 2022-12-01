@@ -8,6 +8,7 @@ file_destination2 = '/Users/ruben/Documents/GitHub/antivirus/procesandoid/'
 file_destination3 = '/Users/ruben/Documents/GitHub/antivirus/cuarentena/'
 file_destination4 = '/Users/ruben/Documents/GitHub/antivirus/logs/'
 file_destination5 = '/Users/ruben/Documents/GitHub/antivirus/procesandorep/'
+file_here = '/Users/ruben/Documents/GitHub/antivirus/'
 timesleepcount=0
 
 def upload(id):
@@ -23,6 +24,7 @@ def upload(id):
         print('Control de tiempo de 60 segundos')
         time.sleep(60)
         timesleepcount=0
+        logtime()
     else:
         response = requests.get(url, headers=headers)
         if(response.status_code == 429):
@@ -35,13 +37,13 @@ def upload(id):
             if jsonresp.get("data").get("attributes").get("status") != "queued":  
                 malget = jsonresp.get("data").get("attributes").get("stats").get("malicious")
                 #print (malget)
-                responsesave(malget,id)
                 if  malget>0:
                     #print('entro m')
                     print(enviocheck)
                     print('\n'+'Archivo malicioso detectado!')
                     filepath = os.path.join(root, filename)
                     shutil.move(filename, file_destination3)
+                    logvir(filename)
                     os.remove(rutaid)
                     bucle = True
                 else:
@@ -67,9 +69,15 @@ def checkFileExistance(enviocheck):
     except IOError as e:
         return False
 
-def responsesave(malget, file):
-    with open(file_destination4+id, "w") as fp:
-        json.dump(malget, fp, indent=2)
+def logvir(file):
+    with open(file_here+'logsfile', "w+") as fp:
+        json.dump(filename + " Archivo malicioso. Se ha desplazado a cuarentena", fp, indent=2)
+def log(file):
+    with open(file_here+'logsfile', "w+") as fp:
+        json.dump(filename + "Archivo correcto. Desplazado a verificado", fp, indent=2)
+def logtime():
+    with open(file_here+'logsfile', "w+") as fp:
+        json.dump("Control de tiempo de 60 segundos", fp, indent=2)        
 
 for root, dirs, files in os.walk(file_source):
     for filename in files:
