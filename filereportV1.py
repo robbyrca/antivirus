@@ -40,7 +40,7 @@ def upload(id):
                 if  malget>0:
                     #print('entro m')
                     print(enviocheck)
-                    print('\n'+'Archivo malicioso detectado!')
+                    print('Archivo malicioso detectado!')
                     filepath = os.path.join(root, filename)
                     shutil.move(filename, file_destination3)
                     logvir(filename)
@@ -71,13 +71,13 @@ def checkFileExistance(enviocheck):
 
 def logvir(file):
     with open(file_here+'logsfile', "a") as fp:
-        json.dump(filename + " Archivo malicioso. Se ha desplazado a cuarentena"+'\n', fp, indent=2)
+        json.dump(filename + " Archivo malicioso. Se ha desplazado a cuarentena"'\n', fp, indent=2)
 def log(file):
     with open(file_here+'logsfile', "a") as fp:
-        json.dump(filename + "Archivo correcto. Desplazado a verificado"+'\n', fp, indent=2)
+        json.dump(filename + " Archivo correcto. Desplazado a verificado"'\n', fp, indent=2)
 def logtime():
     with open(file_here+'logsfile', "a") as fp:
-        json.dump("Control de tiempo de 60 segundos"+'\n', fp, indent=2)        
+        json.dump("Control de tiempo de 60 segundos"'\n', fp, indent=2)        
 
 for root, dirs, files in os.walk(file_source):
     for filename in files:
