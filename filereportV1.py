@@ -79,7 +79,11 @@ def log(file):
 def logtime():
     with open(file_here+'logsfile', "a") as fp:
         fp.write("Control de tiempo de 60 segundos\n")
+def logpy():
+    with open(file_here+'logsfile', "a") as fp:
+        fp.write("\n#filereportV1.py\n")
 
+logpy()
 for root, dirs, files in os.walk(file_source):
     for filename in files:
         filepath = os.path.join(root, filename)

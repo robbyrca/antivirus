@@ -1,1 +1,14 @@
 Control de tiempo de 60 segundos
+
+#sendapiV3.py
+payasin.txt Archivo correcto. Desplazado a verificado
+pija.txt Archivo correcto. Desplazado a verificado
+Firefox Setup 106.0.5.msi Archivo malicioso. Se ha desplazado a cuarentena
+eicar.txt Archivo correcto. Desplazado a verificado
+Control de tiempo de 60 segundos
+surigo.txt Archivo correcto. Desplazado a verificado
+
+#filereportV1.py
+/Users/ruben/Documents/GitHub/antivirus/procesandorep/pija.txt Archivo correcto. Desplazado a verificado
+/Users/ruben/Documents/GitHub/antivirus/procesandorep/eicar.txt Archivo malicioso. Se ha desplazado a cuarentena
+Control de tiempo de 60 segundos

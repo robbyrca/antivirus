@@ -23,6 +23,7 @@ def upload(file):
     timesleepcount = timesleepcount + 1
     if timesleepcount == 5:
         print('Control de tiempo de 60 segundos')
+        logtime()
         time.sleep(60)
         timesleepcount=0
     else:
@@ -37,6 +38,7 @@ def upload(file):
             print(file_destination1+filename + " sended")
             shutil.move(file_destination1+filename, file_destination5)
             idsave(idget,file_destination5+filename)
+            log(filename)
             bucle = True
         else:
             print ("No s'ha pogut obtenir la URL :(")
@@ -55,6 +57,7 @@ def uploadbig(file):
         timesleepcount = timesleepcount + 1
         if timesleepcount == 5:
             print('Control de tiempo de 60 segundos')
+            logtime()
             time.sleep(60)
             timesleepcount=0
 
@@ -87,11 +90,31 @@ def uploadbig(file):
                 print(file_destination1+filename + " sended")
                 shutil.move(file_destination1+filename, file_destination5)
                 idsave(idbig,file_destination5+filename)
+                logbig(filename)
                 buclebig=True
 
 def idsave(id,file):
     with open(file_destination4+id, "w") as fp:
         json.dump(file+":"+id, fp, indent=2)
+
+def logbig(file):
+    with open(file_here+'logsfile', "a") as fp:
+        fp.write(file_destination1+filename + " sended\n")
+def logbigp(filename):
+    with open(file_here+'logsfile', "a") as fp:
+        fp.write(file_destination1+filename + " processing\n")        
+def log(file):
+    with open(file_here+'logsfile', "a") as fp:
+        fp.write(file_destination1+filename + " sended\n")
+def logp(filename):
+    with open(file_here+'logsfile', "a") as fp:
+        fp.write(file_destination1+filename + " processing\n")
+def logtime():
+    with open(file_here+'logsfile', "a") as fp:
+        fp.write("Control de tiempo de 60 segundos\n")
+def logpy():
+    with open(file_here+'logsfile', "a") as fp:
+        fp.write("\n#sendapiV3.py\n")
 
 def checkFileExistance(enviocheck):
     try:
@@ -102,6 +125,7 @@ def checkFileExistance(enviocheck):
     except IOError as e:
         return False
 
+logpy()
 for root, dirs, files in os.walk(file_source):
     for filename in files:
         filepath = os.path.join(root, filename)
@@ -110,11 +134,13 @@ for root, dirs, files in os.walk(file_destination1):
     for filename in files:
         if (os.path.getsize(os.path.join(root, filename)) >> 20) > 32:  
             print("\n"+file_destination1+filename + " processing")
+            logbigp()
             buclebig = False
             while buclebig == False:
                 uploadbig(file_destination1+filename)
         else:
             print("\n"+file_destination1+filename + " processing")
+            logp()
             bucle = False
             while bucle == False:
                 upload(file_destination1+filename)
