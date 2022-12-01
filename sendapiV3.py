@@ -9,6 +9,7 @@ file_destination2 = '/Users/ruben/Documents/GitHub/antivirus/verificado/'
 file_destination3 = '/Users/ruben/Documents/GitHub/antivirus/cuarentena/'
 file_destination4 = '/Users/ruben/Documents/GitHub/antivirus/id/'
 file_destination5 = '/Users/ruben/Documents/GitHub/antivirus/procesandorep/'
+file_here = '/Users/ruben/Documents/GitHub/antivirus/'
 
 def upload(file):
     global timesleepcount

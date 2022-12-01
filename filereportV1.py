@@ -51,6 +51,7 @@ def upload(id):
                     #print(enviocheck+'1')
                     filepath = os.path.join(root, filename)
                     shutil.move(filename, file_destination1)
+                    log(filename)
                     os.remove(rutaid)
                     bucle = True
 
@@ -71,13 +72,13 @@ def checkFileExistance(enviocheck):
 
 def logvir(file):
     with open(file_here+'logsfile', "a") as fp:
-        json.dump(filename + " Archivo malicioso. Se ha desplazado a cuarentena"'\n', fp, indent=2)
+        fp.write(filename + " Archivo malicioso. Se ha desplazado a cuarentena\n")
 def log(file):
     with open(file_here+'logsfile', "a") as fp:
-        json.dump(filename + " Archivo correcto. Desplazado a verificado"'\n', fp, indent=2)
+        fp.write(filename + " Archivo correcto. Desplazado a verificado\n")
 def logtime():
     with open(file_here+'logsfile', "a") as fp:
-        json.dump("Control de tiempo de 60 segundos"'\n', fp, indent=2)        
+        fp.write("Control de tiempo de 60 segundos\n")
 
 for root, dirs, files in os.walk(file_source):
     for filename in files:
