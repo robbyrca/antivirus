@@ -22,9 +22,9 @@ def upload(id):
     timesleepcount = timesleepcount + 1
     if timesleepcount == 5:
         print('Control de tiempo de 60 segundos')
+        logtime()
         time.sleep(60)
         timesleepcount=0
-        logtime()
     else:
         response = requests.get(url, headers=headers)
         if(response.status_code == 429):
